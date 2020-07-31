@@ -30,6 +30,8 @@ function preresolve(dq)
   -- check blocklist
   if blocklist:check(dq.qname) then
     if dq.qtype == pdns.A or dq.qtype == pdns.ANY then
+      -- qtype=pdns.A, content="10.1.1.2", ttl=21600
+      -- need global variable of destenation ip or ip from interface who catch request
       dq:addAnswer(pdns.A, "192.0.2.1")
     end
 
